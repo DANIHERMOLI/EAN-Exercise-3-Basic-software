@@ -114,13 +114,13 @@ public class Main {
     // -- Method to work on one list --
     public static void listResolution(ArrayList<Integer> array) {
         double totalSum = 0;
-        for(int i = 0; i < array.size(); i++) {
-            totalSum += array.get(i);
+        for (int item : array) {
+            totalSum += item;
         }
         Collections.sort(array);
         System.out.println("The smallest number is: " + array.get(0));
         System.out.println("The highest number is: " + array.get(array.size() - 1));
-        System.out.println("The average number is: " + totalSum / array.size());
+        System.out.println("The average is: " + totalSum / array.size());
         System.out.println("The list of numbers you added is: "+ array);
     }
 
@@ -156,12 +156,12 @@ public class Main {
         int n = array.length;
         int average = 0;
         double internalSum = 0;
-        for(int i = 0; i < array.length; i++) {
-            average += array[i];
+        for (double item : array) {
+            average += item;
         }
         average /= n;
-        for(int i = 0; i < array.length; i++) {
-            internalSum += Math.pow((array[i] - average), 2);
+        for (double item : array) {
+            internalSum += Math.pow((item - average), 2);
         }
         return (Math.sqrt(internalSum/(array.length - 1)));
         }
