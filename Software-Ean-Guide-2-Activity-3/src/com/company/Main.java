@@ -23,27 +23,24 @@ public class Main {
         System.out.println("Welcome to the EAN EX.3 App");
         System.out.println("############################");
         System.out.println();
-        System.out.println();
-        Thread.sleep(2000);
         // -- Start of the menu loop --
         int exercise;
         do {
+            System.out.println();
+            sleep();
             exercise = menu();
             if (exercise == 1) {
                 listResolution(getIntArrayList());
-                sleep();
             } else if (exercise == 2) {
                 System.out.println("how many numbers will you add? ");
                 double[] myArray = secondExArray(input.nextInt());
                 System.out.println("The standard deviation is: " + secondExResult(myArray));
-                sleep();
             } else if (exercise == 3) {
                 System.out.println("For the first group: ");
                 ArrayList<String> list1 = getStrArrayList();
                 System.out.println("For the second group: ");
                 ArrayList<String> list2 = getStrArrayList();
                 System.out.println("The unique elements of those lists are: " + listResolution(list1, list2));
-                sleep();
             } else if(exercise == 0){
                 break;  // -- The only option that breaks the loop --
             } else {
