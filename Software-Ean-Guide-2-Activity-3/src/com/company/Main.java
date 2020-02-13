@@ -169,24 +169,24 @@ public class Main {
         Scanner input = new Scanner(System.in);
 
         int option;
-        do{
-        System.out.println("Here is the list of exercises");
-        System.out.println();
-        System.out.println("1. Average, Highest, Lowest");
-        System.out.println("2. Standard Deviation");
-        System.out.println("3. Differences Between 2 Lists");
-        System.out.println("0. To exit the app");
-        System.out.println();
-        System.out.println("Please enter the number of what you want to execute: ");
-        option = input.nextInt();
-        if(option < 0 || option > 3) {
-            System.out.println("ERROR: Please enter a number between 0 and 3");
+        do {
+            System.out.println("Here is the list of exercises");
             System.out.println();
+            System.out.println("1. Average, Highest, Lowest");
+            System.out.println("2. Standard Deviation");
+            System.out.println("3. Differences Between 2 Lists");
+            System.out.println("0. To exit the app");
             System.out.println();
-            sleep();
-        } else {
-            break;
-        }
+            System.out.println("Please enter the number of what you want to execute: ");
+            option = input.nextInt();
+            if(option < 0 || option > 3) {
+                System.out.println("ERROR: Please enter a number between 0 and 3");
+                System.out.println();
+                System.out.println();
+                sleep();
+            } else {
+                break;
+            }
         } while(true);
         return option;
     }
