@@ -1,34 +1,44 @@
+/**
+ @title          :Main.java
+ @description    :This is the solution for the third guide of software development
+ @author         :Sergio Guzman @ sergio.guzman@blackboard.com
+ @date           :2020-02-12
+ @version        :1.0
+ @usage          :java Main.java
+ ==================================================================================================================
+ */
+
 package com.company;
 
-import java.util.ArrayList;
-import java.util.Collections;
-import java.util.List;
-import java.util.Scanner;
+import java.util.*;
 import java.lang.Math;
 
 public class Main {
 
-    public static void main(String[] args) {
+    public static void main(String[] args) throws InterruptedException {
         Scanner input = new Scanner(System.in);
-
-        System.out.println("Select the exercise: ");
-        int exercise = input.nextInt();
-        if(exercise == 1) {
-            firstEx(getIntArrayList());
-        } else if(exercise == 2) {
-            System.out.println("how many numbers will you add? ");
-            int number = input.nextInt();
-            double [] myArray = secondExArray(number);
-            System.out.println(secondExResult(myArray));
-        } else if(exercise == 3) {
-            System.out.println("For the first group: ");
-            ArrayList<String> list1 = getStrArrayList();
-            System.out.println("For the second group: ");
-            ArrayList<String> list2 = getStrArrayList();
-            System.out.println(firstEx(list1, list2));
-        } else {
-            System.out.println("Ummmmmm........really?");
-        }
+        int exercise;
+        do {
+            exercise = menu();
+            if (exercise == 1) {
+                listResolution(getIntArrayList());
+                sleep();
+            } else if (exercise == 2) {
+                System.out.println("how many numbers will you add? ");
+                double[] myArray = secondExArray(input.nextInt());
+                System.out.println("The standard deviation is: " + secondExResult(myArray));
+                sleep();
+            } else if (exercise == 3) {
+                System.out.println("For the first group: ");
+                ArrayList<String> list1 = getStrArrayList();
+                System.out.println("For the second group: ");
+                ArrayList<String> list2 = getStrArrayList();
+                System.out.println("The unique elements of those lists are: " + listResolution(list1, list2));
+                sleep();
+            } else {
+                System.out.println("ERROR: Invalid Choice.");
+            }
+        } while(exercise != 0);
     }
 
     public static ArrayList<Integer> getIntArrayList() {
@@ -39,21 +49,22 @@ public class Main {
         for (int i = 1; i <= userChoice; i++) {
             System.out.println("Enter the " + i + " value.");
             array.add(input.nextInt());
-            do {
-                System.out.println("Do you want to add another number? N/Y");
-                String choice = input.next();
-                choice = choice.toLowerCase();
-                if (choice.equals("y")) {
-                    System.out.println("Please enter a number");
-                    int number = input.nextInt();
-                    array.add(number);
-                } else if (choice.equals("n")) {
-                    break;
-                } else {
-                    System.out.println("ERROR: Incorrect choice. Only N/Y are allowed");
-                }
-            } while (true);
         }
+        do {
+            System.out.println("Do you want to add another number? N/Y");
+            String choice = input.next();
+            choice = choice.toLowerCase();
+            if (choice.equals("y")) {
+                System.out.println("Please enter a number");
+                int number = input.nextInt();
+                array.add(number);
+            } else if (choice.equals("n")) {
+                break;
+            } else {
+                System.out.println("ERROR: Incorrect choice. Only N/Y are allowed");
+            }
+        } while (true);
+
         return array;
     }
 
@@ -86,7 +97,7 @@ public class Main {
 
 
 
-    public static void firstEx(ArrayList<Integer> array) {
+    public static void listResolution(ArrayList<Integer> array) {
         double totalSum = 0;
         for(int i = 0; i < array.size(); i++) {
             totalSum += array.get(i);
@@ -95,10 +106,10 @@ public class Main {
         System.out.println("The smallest number is: " + array.get(0));
         System.out.println("The highest number is: " + array.get(array.size() - 1));
         System.out.println("The average number is: " + totalSum / array.size());
-        System.out.println(array);
+        System.out.println("The list of numbers you added is: "+ array);
     }
 
-    public static List firstEx(ArrayList<String> list1, ArrayList<String> list2) {
+    public static List<String> listResolution(ArrayList<String> list1, ArrayList<String> list2) {
         Collections.sort(list1);
         Collections.sort(list2);
         List<String> tempList = new ArrayList<>(list1);
@@ -133,4 +144,41 @@ public class Main {
         }
         return (Math.sqrt(internalSum/(array.length - 1)));
         }
+
+    public static int menu() throws InterruptedException {
+        Scanner input = new Scanner(System.in);
+
+        int option;
+        do{
+        System.out.println();
+        System.out.println();
+        System.out.println("############################");
+        System.out.println("Welcome to the EAN EX.3 App");
+        System.out.println("############################");
+        System.out.println();
+        System.out.println();
+        Thread.sleep(2000);
+        System.out.println("Here is the list of exercises");
+        System.out.println();
+        System.out.println("1. Average, Highest, Lowest");
+        System.out.println("2. Standard Deviation");
+        System.out.println("3. Differences Between 2 Lists");
+        System.out.println("0. To exit the app");
+        System.out.println();
+        System.out.println("Please enter the number of what you want to execute: ");
+        option = input.nextInt();
+        if(option < 0 || option > 3) {
+            System.out.println("ERROR: Please enter a number between 0 and 10");
+            sleep();
+        } else {
+            break;
+        }
+        } while(true);
+        return option;
     }
+
+
+    public static void sleep() throws InterruptedException {
+        Thread.sleep(3500);
+    }
+}
