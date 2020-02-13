@@ -18,6 +18,7 @@ public class Main {
     public static void main(String[] args) throws InterruptedException {
         Scanner input = new Scanner(System.in);
 
+        System.out.println();
         System.out.println("############################");
         System.out.println("Welcome to the EAN EX.3 App");
         System.out.println("############################");
@@ -128,14 +129,11 @@ public class Main {
     public static List<String> listResolution(ArrayList<String> list1, ArrayList<String> list2) {
         Collections.sort(list1);
         Collections.sort(list2);
-        System.out.println(list1);
-        System.out.println(list2);
         List<String> tempList = new ArrayList<>(list1);
         tempList.removeAll(list2);
         list2.removeAll(list1);
         tempList.addAll(list2);
         Collections.sort(tempList);
-        System.out.println(tempList);
         return (tempList);
     }
 
