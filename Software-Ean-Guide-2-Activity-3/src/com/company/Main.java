@@ -14,7 +14,7 @@ import java.util.*;
 import java.lang.Math;
 
 public class Main {
-
+    // -- Main Method --
     public static void main(String[] args) throws InterruptedException {
         Scanner input = new Scanner(System.in);
 
@@ -24,6 +24,7 @@ public class Main {
         System.out.println();
         System.out.println();
         Thread.sleep(2000);
+        // -- Start of the menu loop --
         int exercise;
         do {
             exercise = menu();
@@ -43,7 +44,7 @@ public class Main {
                 System.out.println("The unique elements of those lists are: " + listResolution(list1, list2));
                 sleep();
             } else if(exercise == 0){
-                break;
+                break;  // -- The only option that breaks the loop --
             } else {
                 System.out.println("ERROR: Invalid Internal Handler.");
                 System.out.println();
@@ -54,7 +55,8 @@ public class Main {
         sleep();
     }
 
-
+    // -- Methods --
+    // -- Method to create the List of Int --
     public static ArrayList<Integer> getIntArrayList() {
         Scanner input = new Scanner(System.in);
         ArrayList<Integer> array = new ArrayList<>();
@@ -82,7 +84,7 @@ public class Main {
         return array;
     }
 
-
+    // -- Method to create the List of Strings --
     public static ArrayList<String> getStrArrayList() {
         Scanner input = new Scanner(System.in);
         ArrayList<String> array = new ArrayList<>();
@@ -109,7 +111,7 @@ public class Main {
         return array;
     }
 
-
+    // -- Method to work on one list --
     public static void listResolution(ArrayList<Integer> array) {
         double totalSum = 0;
         for(int i = 0; i < array.size(); i++) {
@@ -122,7 +124,7 @@ public class Main {
         System.out.println("The list of numbers you added is: "+ array);
     }
 
-
+    // -- Method override to work on 2 lists --
     public static List<String> listResolution(ArrayList<String> list1, ArrayList<String> list2) {
         Collections.sort(list1);
         Collections.sort(list2);
@@ -137,7 +139,7 @@ public class Main {
         return (tempList);
     }
 
-
+    // -- Creates the Array for the second ex. --
     public static double[] secondExArray(int number) {
         Scanner input = new Scanner(System.in);
         double [] array = new double[number];
@@ -149,7 +151,7 @@ public class Main {
         return array;
     }
 
-
+    // -- Solved the Array of the second ex. --
     public static double secondExResult(double [] array) {
         int n = array.length;
         int average = 0;
@@ -164,7 +166,7 @@ public class Main {
         return (Math.sqrt(internalSum/(array.length - 1)));
         }
 
-
+    // -- Improved Menu --
     public static int menu() throws InterruptedException {
         Scanner input = new Scanner(System.in);
 
