@@ -17,6 +17,13 @@ public class Main {
 
     public static void main(String[] args) throws InterruptedException {
         Scanner input = new Scanner(System.in);
+
+        System.out.println("############################");
+        System.out.println("Welcome to the EAN EX.3 App");
+        System.out.println("############################");
+        System.out.println();
+        System.out.println();
+        Thread.sleep(2000);
         int exercise;
         do {
             exercise = menu();
@@ -35,11 +42,18 @@ public class Main {
                 ArrayList<String> list2 = getStrArrayList();
                 System.out.println("The unique elements of those lists are: " + listResolution(list1, list2));
                 sleep();
+            } else if(exercise == 0){
+                break;
             } else {
-                System.out.println("ERROR: Invalid Choice.");
+                System.out.println("ERROR: Invalid Internal Handler.");
+                System.out.println();
+                System.out.println();
             }
-        } while(exercise != 0);
+        } while(true);
+        System.out.println("Good Bye!");
+        sleep();
     }
+
 
     public static ArrayList<Integer> getIntArrayList() {
         Scanner input = new Scanner(System.in);
@@ -68,6 +82,7 @@ public class Main {
         return array;
     }
 
+
     public static ArrayList<String> getStrArrayList() {
         Scanner input = new Scanner(System.in);
         ArrayList<String> array = new ArrayList<>();
@@ -95,8 +110,6 @@ public class Main {
     }
 
 
-
-
     public static void listResolution(ArrayList<Integer> array) {
         double totalSum = 0;
         for(int i = 0; i < array.size(); i++) {
@@ -109,16 +122,21 @@ public class Main {
         System.out.println("The list of numbers you added is: "+ array);
     }
 
+
     public static List<String> listResolution(ArrayList<String> list1, ArrayList<String> list2) {
         Collections.sort(list1);
         Collections.sort(list2);
+        System.out.println(list1);
+        System.out.println(list2);
         List<String> tempList = new ArrayList<>(list1);
         tempList.removeAll(list2);
         list2.removeAll(list1);
         tempList.addAll(list2);
         Collections.sort(tempList);
+        System.out.println(tempList);
         return (tempList);
     }
+
 
     public static double[] secondExArray(int number) {
         Scanner input = new Scanner(System.in);
@@ -130,6 +148,7 @@ public class Main {
         }
         return array;
     }
+
 
     public static double secondExResult(double [] array) {
         int n = array.length;
@@ -145,19 +164,12 @@ public class Main {
         return (Math.sqrt(internalSum/(array.length - 1)));
         }
 
+
     public static int menu() throws InterruptedException {
         Scanner input = new Scanner(System.in);
 
         int option;
         do{
-        System.out.println();
-        System.out.println();
-        System.out.println("############################");
-        System.out.println("Welcome to the EAN EX.3 App");
-        System.out.println("############################");
-        System.out.println();
-        System.out.println();
-        Thread.sleep(2000);
         System.out.println("Here is the list of exercises");
         System.out.println();
         System.out.println("1. Average, Highest, Lowest");
@@ -168,7 +180,9 @@ public class Main {
         System.out.println("Please enter the number of what you want to execute: ");
         option = input.nextInt();
         if(option < 0 || option > 3) {
-            System.out.println("ERROR: Please enter a number between 0 and 10");
+            System.out.println("ERROR: Please enter a number between 0 and 3");
+            System.out.println();
+            System.out.println();
             sleep();
         } else {
             break;
