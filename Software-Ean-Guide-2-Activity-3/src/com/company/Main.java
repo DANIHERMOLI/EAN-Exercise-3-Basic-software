@@ -14,9 +14,10 @@ import java.util.*;
 import java.lang.Math;
 
 public class Main {
+
+    static Scanner input = new Scanner(System.in);
     // -- Main Method --
     public static void main(String[] args) throws InterruptedException {
-        Scanner input = new Scanner(System.in);
 
         System.out.println();
         System.out.println("############################");
@@ -27,7 +28,6 @@ public class Main {
         int exercise;
         do {
             System.out.println();
-            sleep();
             exercise = menu();
             if (exercise == 1) {
                 listResolution(getIntArrayList());
@@ -48,6 +48,7 @@ public class Main {
                 System.out.println();
                 System.out.println();
             }
+            sleep();
         } while(true);
         System.out.println("Good Bye!");
         sleep();
@@ -56,7 +57,6 @@ public class Main {
     // -- Methods --
     // -- Method to create the List of Int --
     public static ArrayList<Integer> getIntArrayList() {
-        Scanner input = new Scanner(System.in);
         ArrayList<Integer> array = new ArrayList<>();
         System.out.println("How many numbers do you want to add?");
         int userChoice = input.nextInt();
@@ -84,7 +84,6 @@ public class Main {
 
     // -- Method to create the List of Strings --
     public static ArrayList<String> getStrArrayList() {
-        Scanner input = new Scanner(System.in);
         ArrayList<String> array = new ArrayList<>();
         System.out.println("How many items do you want to add?");
         int userChoice = input.nextInt();
@@ -136,7 +135,6 @@ public class Main {
 
     // -- Creates the Array for the second ex. --
     public static double[] secondExArray(int number) {
-        Scanner input = new Scanner(System.in);
         double [] array = new double[number];
 
         System.out.println("Enter " + number + " values");
@@ -163,7 +161,6 @@ public class Main {
 
     // -- Improved Menu --
     public static int menu() throws InterruptedException {
-        Scanner input = new Scanner(System.in);
 
         int option;
         do {
@@ -175,15 +172,22 @@ public class Main {
             System.out.println("0. To exit the app");
             System.out.println();
             System.out.println("Please enter the number of what you want to execute: ");
-            option = input.nextInt();
-            if(option < 0 || option > 3) {
-                System.out.println("ERROR: Please enter a number between 0 and 3");
-                System.out.println();
-                System.out.println();
-                sleep();
+            boolean intChecker = input.hasNextInt();
+            if(intChecker) {
+                option = input.nextInt();
+                if (option < 0 || option > 3) {
+                    System.out.println("ERROR: Please enter a number between 0 and 3");
+                    System.out.println();
+                    System.out.println();
+                    sleep();
+                } else {
+                    break;
+                }
             } else {
-                break;
+                System.out.println("ERROR: Only numbers are allowed");
+                sleep();
             }
+            input.nextLine();
         } while(true);
         return option;
     }
